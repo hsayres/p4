@@ -2,6 +2,18 @@
 
 return [
 
+    'statusLevels' => [
+    0=>'Not started',
+    1=>'In progress',
+    2=>'Done',
+
+    ],
+
+    'nav' => [
+        '/' => 'Home',
+        '/tasklists' => 'List Tracker',
+        '/tasklists/create' => 'New List',
+    ],
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -13,7 +25,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'Laravel'),
+    'name' => env('APP_NAME', 'Task Tracker'),
 
     /*
     |--------------------------------------------------------------------------
