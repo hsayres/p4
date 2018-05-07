@@ -2,9 +2,9 @@
 
 use Illuminate\Database\Seeder;
 use App\Task;
-use App\Tasklist;
+use App\Goal;
 
-class TaskTasklistTableSeeder extends Seeder
+class GoalTaskTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,21 +13,21 @@ class TaskTasklistTableSeeder extends Seeder
      */
     public function run()
     {
-        $tasklists = [
+        $goals = [
 
             'House chores' => ['Paint the walls'],
             'Things to buy' => ['Buy yellow paint for the walls'],
             'Research topics' => ['Buy yellow paint for the walls', 'Learn object-relational mapping']
         ];
 
-        foreach ($tasklists as $title => $tasks) {
-            $tasklist = Tasklist::where('title', 'like', $title)->first();
+        foreach ($goals as $title => $tasks) {
+            $goal = Goal::where('title', 'like', $title)->first();
 
 
             foreach ($tasks as $taskName){
                 $task = Task::where('title', 'like', $taskName)->first();
 
-                $tasklist->tasks()->save($task);
+                $goal->tasks()->save($task);
             }
         }
     }

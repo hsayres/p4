@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTaskTasklistTable extends Migration
+class CreateGoalsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,11 @@ class CreateTaskTasklistTable extends Migration
      */
     public function up()
     {
-        Schema::create('task_tasklist', function (Blueprint $table) {
+        Schema::create('goals', function (Blueprint $table) {
             $table->increments('id');
             $table->timestamps();
-
-            $table->integer('task_id')->unsigned();
-            $table->integer('tasklist_id')->unsigned();
-
-            $table->foreign('task_id')->references('id')->on('tasks');
-            $table->foreign('tasklist_id')->references('id')->on('tasklists');
+            $table->string('title');
+            $table->string('description')->nullable();
 
         });
     }
@@ -33,6 +29,6 @@ class CreateTaskTasklistTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('task_tasklist');
+        Schema::dropIfExists('goals');
     }
 }

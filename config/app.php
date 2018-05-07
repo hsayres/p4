@@ -11,8 +11,8 @@ return [
 
     'nav' => [
         '/' => 'Home',
-        '/tasklists' => 'List Tracker',
-        '/tasklists/create' => 'New List',
+        '/goals' => 'List Goals',
+        '/goals/create' => 'New Goal',
     ],
     /*
     |--------------------------------------------------------------------------

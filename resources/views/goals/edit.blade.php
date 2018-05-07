@@ -2,19 +2,19 @@
 
 @section('content')
 
-    <h1>Edit {{$tasklist->title}}</h1>
-    <form method='POST' action='/tasklists/{{$tasklist->id}}'>
+    <h1>Edit {{$goal->title}}</h1>
+    <form method='POST' action='/goals/{{$goal->id}}'>
         {{ method_field('put') }}
 
         {{ csrf_field() }}
 
         <ul>
             <li><label>Title
-                    <input type='text' name='title' value='{{ old('title', $tasklist->title) }}' >
+                    <input type='text' name='title' value='{{ old('title', $goal->title) }}' >
                     @include('modules.error-field', ['field' => 'title'])
                 </label></li>
             <li><label>Description
-                    <input type='text' name='description' value='{{ old('description', $tasklist->description) }}' >
+                    <input type='text' name='description' value='{{ old('description', $goal->description) }}' >
                     @include('modules.error-field', ['field' => 'description'])
                 </label></li>
 

@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Task extends Model
 {
 
-    public function tasklists()
+    public function goals()
     {
-        return $this->belongsToMany('App\Tasklist')->withTimestamps();
+        return $this->belongsToMany('App\Goal')->withTimestamps();
     }
 
 

@@ -2,8 +2,8 @@
 
 @section('content')
 
-    <h1>Create a new task list</h1>
-    <form method='POST' action='/tasklists'>
+    <h1>Create a new goal</h1>
+    <form method='POST' action='/goals'>
         {{ csrf_field() }}
 
         <ul>

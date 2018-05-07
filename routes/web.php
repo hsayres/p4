@@ -13,19 +13,18 @@
 
 Route::get('/', 'PageController@welcome');
 
-Route::get('/tasklists', 'TasklistController@index');
-Route::get('/tasklists/create', 'TasklistController@create');
+Route::get('/goals', 'GoalController@index');
+Route::get('/goals/create', 'GoalController@create');
 
-Route::get('/tasks/create', 'TaskController@create');
 
-Route::post('tasklists', 'TasklistController@store');
+Route::post('goals', 'GoalController@store');
 
-Route::get('/tasklists/search', 'TasklistController@search');
+Route::get('/goals/search', 'GoalController@search');
 
-Route::get('/tasklists/{id}', 'TasklistController@show');
+Route::get('/goals/{id}', 'GoalController@show');
 
-Route::get('/tasklists/{id}/edit', 'TasklistController@edit');
-Route::put('/tasklists/{id}', 'TasklistController@update');
+Route::get('/goals/{id}/edit', 'GoalController@edit');
+Route::put('/goals/{id}', 'GoalController@update');
 
-Route::get('/tasklists/{id}/delete', 'TasklistController@delete');
-Route::delete('/tasklists/{id}', 'TasklistController@destroy');
+Route::get('/goals/{id}/delete', 'GoalController@delete');
+Route::delete('/goals/{id}', 'GoalController@destroy');
