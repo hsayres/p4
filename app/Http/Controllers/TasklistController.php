@@ -25,14 +25,19 @@ class TasklistController extends Controller
     public function show($id)
     {
         $tasklist = Tasklist::find($id);
+        $tasksForCheckboxes = Task::getForCheckboxes();
 
         if(!$tasklist) {
             return redirect('/tasklists')->with(
                 ['alert' => 'Task list '.$id.' not found']
             );
         }
+
+
         return view('tasklists.show')->with([
-            'tasklist'=>$tasklist
+            'tasklist'=>$tasklist,
+            'tasksForCheckboxes' =>$tasksForCheckboxes,
+            'tasks' => $tasklist->tasks()->pluck('tasks.id')->toArray()
         ]);
     }
 
@@ -48,14 +53,9 @@ class TasklistController extends Controller
 
     public function store(Request $request)
     {
-        $task = new Task();
-        $task->title = $request->task;
+        $tasks = [$request->task1, $request->task2, $request->task3];
 
-        if (Task::where('title', 'like', $task->title)->first()){
-            return redirect('/tasklists/create')->with(
-                ['alert' => 'Task name '.$task->title.' already exists. Please select it instead of adding a new tag']
-            );
-        }
+
 
         $this->validate($request, [
             'title' => 'required',
@@ -64,16 +64,22 @@ class TasklistController extends Controller
         $title = $request->title;
 
         $tasklist = new Tasklist();
-        $tasklist->title = $request->title;
+        $tasklist->title = $title;
         $tasklist->description = $request->description;
         $tasklist->save();
 
-        if (!empty($task)){
-            $tasklist->tasks()->save($task);
-        }
         $tasklist->tasks()->sync($request->input('tasks'));
-        $newtask = Task::where('title', 'like', $task->title)->first();
-        $tasklist->tasks()->sync($newtask);
+
+        foreach ($tasks as $thisTask) {
+            if (!empty($thisTask)) {
+                $task = new Task();
+                $task->title = $thisTask;
+                $tasklist->tasks()->save($task);
+                $newtask = Task::where('title', 'like', $task->title)->first();
+                $tasklist->tasks()->sync($newtask);
+            }
+        }
+
         return redirect('/tasklists/create')->with([
             'alert' => 'Your list '.$title.' was added'
         ]);
@@ -111,6 +117,13 @@ class TasklistController extends Controller
         $tasklist->tasks()->sync($request->input('tasks'));
         $tasklist->save();
 
+        $task = new Task();
+        $task->title = $request->task1;
+        if (!empty($task->title)) {
+            $tasklist->tasks()->save($task);
+            $newtask = Task::where('title', 'like', $task->title)->first();
+            $tasklist->tasks()->sync($newtask);
+        }
         return redirect('/tasklists/'.$id)->with([
             'alert' => 'Your edits were processed'
         ]);
