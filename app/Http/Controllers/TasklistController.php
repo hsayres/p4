@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Tasklist;
 use App\Task;
+use DB;
 
 class TasklistController extends Controller
 {
@@ -39,8 +40,7 @@ class TasklistController extends Controller
     {
         $tasksForCheckboxes = Task::getForCheckboxes();
         return view('tasklists.create')->with([
-            'tasksForCheckboxes' =>$tasksForCheckboxes[0],
-            'tasksStatusesForCheckboxes'=>$tasksForCheckboxes[1],
+            'tasksForCheckboxes' =>$tasksForCheckboxes,
             'tasklist' => new Tasklist(),
             'tasks' => [],
         ]);
@@ -48,6 +48,14 @@ class TasklistController extends Controller
 
     public function store(Request $request)
     {
+        $task = new Task();
+        $task->title = $request->task;
+
+        if (Task::where('title', 'like', $task->title)->first()){
+            return redirect('/tasklists/create')->with(
+                ['alert' => 'Task name '.$task->title.' already exists. Please select it instead of adding a new tag']
+            );
+        }
 
         $this->validate($request, [
             'title' => 'required',
@@ -60,8 +68,12 @@ class TasklistController extends Controller
         $tasklist->description = $request->description;
         $tasklist->save();
 
+        if (!empty($task)){
+            $tasklist->tasks()->save($task);
+        }
         $tasklist->tasks()->sync($request->input('tasks'));
-
+        $newtask = Task::where('title', 'like', $task->title)->first();
+        $tasklist->tasks()->sync($newtask);
         return redirect('/tasklists/create')->with([
             'alert' => 'Your list '.$title.' was added'
         ]);
@@ -79,7 +91,7 @@ class TasklistController extends Controller
         }
         return view('tasklists.edit')->with([
         'tasklist' => $tasklist,
-        'tasksForCheckboxes' =>$tasksForCheckboxes[0],
+        'tasksForCheckboxes' =>$tasksForCheckboxes,
         'tasks' => $tasklist->tasks()->pluck('tasks.id')->toArray(),
         ]);
     }

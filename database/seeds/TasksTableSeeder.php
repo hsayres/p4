@@ -12,16 +12,12 @@ class TasksTableSeeder extends Seeder
      */
     public function run()
     {
-        $tasks = [
-            ['Paint the walls', 0],
-            ['Buy yellow paint for the walls', 0],
-            ['Learn object-relational mapping', 1],
-        ];
+        $tasks =
+            ['Paint the walls', 'Buy yellow paint for the walls', 'Learn object-relational mapping'];
 
-        foreach ($tasks as $key => $thisTask) {
+        foreach ($tasks as $taskTitle){
             $task = new Task();
-            $task->title = $thisTask[0];
-            $task->status = $thisTask[1];
+            $task->title = $taskTitle;
 
             $task->save();
         }

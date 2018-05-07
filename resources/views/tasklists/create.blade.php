@@ -16,7 +16,10 @@
                     @include('modules.error-field', ['field' => 'description'])
                 </label></li>
 
-
+            <li><label>Task
+                    <input text='text' name = 'task' value='{{ $task or old('task') }}'>
+                    @include('modules.error-field', ['field' => 'description'])
+            </label></li>
             @foreach($tasksForCheckboxes as $taskId => $taskTitle)
                 <li><label><input type='checkbox' name='tasks[]' value='{{ $taskId }}'>
                 {{ $taskTitle }}
@@ -25,7 +28,7 @@
 
         </ul>
 
-        <input type='submit' value='Add list' class='btn btn-primary'>
+        <input type='Submit' value='Add goal' class='btn btn-primary'>
 
     </form>
 

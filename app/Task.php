@@ -12,6 +12,7 @@ class Task extends Model
         return $this->belongsToMany('App\Tasklist')->withTimestamps();
     }
 
+
     public static function getForCheckboxes()
     {
         $tasks = self::orderBy('title')->get();
@@ -20,9 +21,8 @@ class Task extends Model
 
         foreach($tasks as $task){
             $tasksForCheckboxes[$task->id] = $task->title;
-            $taskStatusesForCheckboxes[$task->id] = $task->status;
         }
 
-        return [$tasksForCheckboxes, $taskStatusesForCheckboxes];
+        return $tasksForCheckboxes;
     }
 }

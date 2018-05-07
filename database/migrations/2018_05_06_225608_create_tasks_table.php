@@ -17,7 +17,6 @@ class CreateTasksTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->string('title');
-            $table->integer('status');
         });
     }
 

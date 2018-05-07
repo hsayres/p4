@@ -16,6 +16,8 @@ Route::get('/', 'PageController@welcome');
 Route::get('/tasklists', 'TasklistController@index');
 Route::get('/tasklists/create', 'TasklistController@create');
 
+Route::get('/tasks/create', 'TaskController@create');
+
 Route::post('tasklists', 'TasklistController@store');
 
 Route::get('/tasklists/search', 'TasklistController@search');
