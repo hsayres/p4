@@ -52,24 +52,12 @@ class TasklistController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'description' => 'required',
-            'task_1_title' => 'required',
-            'task_1_status' => 'required',
-            'task_2_title' => 'required',
-            'task_2_status' => 'required',
-            'task_3_title' => 'required',
-            'task_3_status' => 'required',
         ]);
         $title = $request->title;
 
         $tasklist = new Tasklist();
         $tasklist->title = $request->title;
         $tasklist->description = $request->description;
-        $tasklist->task_1_title = $request->task_1_title;
-        $tasklist->task_1_status = $request->task_1_status;
-        $tasklist->task_2_title = $request->task_2_title;
-        $tasklist->task_2_status = $request->task_2_status;
-        $tasklist->task_3_title = $request->task_3_title;
-        $tasklist->task_3_status = $request->task_3_status;
         $tasklist->save();
 
         $tasklist->tasks()->sync($request->input('tasks'));
@@ -103,22 +91,10 @@ class TasklistController extends Controller
         $this->validate($request, [
             'title' => 'required',
             'description' => 'required',
-            'task_1_title' => 'required',
-            'task_1_status' => 'required',
-            'task_2_title' => 'required',
-            'task_2_status' => 'required',
-            'task_3_title' => 'required',
-            'task_3_status' => 'required',
         ]);
 
         $tasklist->title = $request->title;
         $tasklist->description = $request->description;
-        $tasklist->task_1_title = $request->task_1_title;
-        $tasklist->task_1_status = $request->task_1_status;
-        $tasklist->task_2_title = $request->task_2_title;
-        $tasklist->task_2_status = $request->task_2_status;
-        $tasklist->task_3_title = $request->task_3_title;
-        $tasklist->task_3_status = $request->task_3_status;
 
         $tasklist->tasks()->sync($request->input('tasks'));
         $tasklist->save();

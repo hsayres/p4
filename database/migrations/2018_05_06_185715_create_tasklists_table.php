@@ -18,12 +18,6 @@ class CreateTasklistsTable extends Migration
             $table->timestamps();
             $table->string('title');
             $table->string('description')->nullable();
-            $table->string('task_1_title');
-            $table->integer('task_1_status');
-            $table->string('task_2_title');
-            $table->integer('task_2_status');
-            $table->string('task_3_title');
-            $table->integer('task_3_status');
 
         });
     }

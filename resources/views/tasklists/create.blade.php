@@ -15,42 +15,6 @@
                     <input type='text' name='description' value='{{ $description or old('description') }}' >
                     @include('modules.error-field', ['field' => 'description'])
                 </label></li>
-            <li><label>Task #1
-                    <input type='text' name='task_1_title' value='{{ $task_1_title or old('task_1_title') }}' >
-                    @include('modules.error-field', ['field' => 'task_1_title'])
-                </label></li>
-            <li><label >Status
-                    <select name='task_1_status' id='task_1_status' >
-                        @foreach(config('app.statusLevels') as $task_1_status => $task_1_description)
-                            <option value="{{ $task_1_status }}"  @if( (Request::has('task_1_status') && Request::input('task_1_status') ==  $task_1_status) or (Request::old('task_1_status') == $task_1_status))) selected='selected' @endif> {{ $task_1_description }} </option>
-                        @endforeach
-                    </select>
-                    @include('modules.error-field', ['field' => 'task_1_status'])
-                </label></li>
-            <li><label>Task #2
-                    <input type='text' name='task_2_title' value='{{ $task_2_title or old('task_2_title') }}' >
-                    @include('modules.error-field', ['field' => 'task_2_title'])
-                </label></li>
-            <li><label >Status
-                    <select name='task_2_status' id='task_2_status' >
-                        @foreach(config('app.statusLevels') as $task_2_status => $task_2_description)
-                            <option value="{{ $task_2_status }}"  @if( (Request::has('task_2_status') && Request::input('task_2_status') ==  $task_2_status) or (Request::old('task_2_status') == $task_2_status))) selected='selected' @endif> {{ $task_2_description }} </option>
-                        @endforeach
-                    </select>
-                    @include('modules.error-field', ['field' => 'task_2_status'])
-                </label></li>
-            <li><label>Task #3
-                    <input type='text' name='task_3_title' value='{{ $task_3_title or old('task_3_title') }}' >
-                    @include('modules.error-field', ['field' => 'task_3_title'])
-                </label></li>
-            <li><label >Status
-                    <select name='task_3_status' id='task_3_status' >
-                        @foreach(config('app.statusLevels') as $task_3_status => $task_3_description)
-                            <option value="{{ $task_3_status }}"  @if( (Request::has('task_3_status') && Request::input('task_3_status') ==  $task_3_status) or (Request::old('task_3_status') == $task_3_status))) selected='selected' @endif> {{ $task_3_description }} </option>
-                        @endforeach
-                    </select>
-                    @include('modules.error-field', ['field' => 'task_3_status'])
-                </label></li>
 
 
             @foreach($tasksForCheckboxes as $taskId => $taskTitle)
