@@ -16,6 +16,8 @@ Route::get('/', 'PageController@welcome');
 Route::get('/goals', 'GoalController@index');
 Route::get('/goals/create', 'GoalController@create');
 
+Route::get('/tasks', 'TaskController@index');
+
 
 Route::post('goals', 'GoalController@store');
 

@@ -5,8 +5,10 @@
 @endsection
 
 @section('content')
-    <h1>Welcome</h1>
-    <p>
-        Choose a feature above to get started.
-    </p>
+    <div class='container'>
+        <h1>Welcome</h1>
+        <p>
+            Choose a feature above to get started.
+        </p>
+    </div>
 @endsection

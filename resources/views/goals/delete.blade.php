@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-
+    <div class='container'>
     <h1>Confirm deletion</h1>
 
     <p>Are you sure you want to delete this goal?</p>
@@ -14,5 +14,5 @@
     <p>
         <a href='/goals/{{$goal->id}}'>No</a>
     </p>
-
+    </div>
 @endsection

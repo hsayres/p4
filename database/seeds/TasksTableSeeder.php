@@ -13,7 +13,7 @@ class TasksTableSeeder extends Seeder
     public function run()
     {
         $tasks =
-            ['Paint the walls', 'Buy yellow paint for the walls', 'Learn object-relational mapping'];
+            ['Go to the gym', 'Eat healthy food', 'Go hiking in Marin', 'Go biking in Tahoe', 'Climb Machu Pichu', 'Meditate', 'Do yoga'];
 
         foreach ($tasks as $taskTitle){
             $task = new Task();

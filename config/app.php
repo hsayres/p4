@@ -2,17 +2,12 @@
 
 return [
 
-    'statusLevels' => [
-    0=>'Not started',
-    1=>'In progress',
-    2=>'Done',
 
-    ],
 
     'nav' => [
-        '/' => 'Home',
+
         '/goals' => 'List Goals',
-        '/goals/create' => 'New Goal',
+        '/tasks' => 'List Tasks'
     ],
     /*
     |--------------------------------------------------------------------------

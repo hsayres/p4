@@ -5,20 +5,40 @@
 @endsection
 
 @section('content')
-    <h1>{{ $goal->title }}</h1>
-    <h2>{{ $goal->description }}</h2>
-    <p>
-    <ul>
-    @foreach($tasksForCheckboxes as $taskId => $taskTitle)
-        @if(in_array($taskId, $tasks))
-            <li>
-                <label> {{ $taskTitle }} </label>
-            </li>
-        @endif
-    @endforeach
-    </ul>
-    </p>
-    <p> <a href='/goals/{{$goal->id}}/edit'> Edit this task list </a></p>
-    <p> <a href='/goals/{{$goal->id}}/delete'> Delete this task list </a></p>
+    <div class="container">
+        <h1>View "{{ $goal->title }}" goal</h1>
 
+
+        <ul>
+            <li>
+                <h3>Description:</h3>
+            </li>
+            <li>
+                {{ $goal->description }}
+            </li>
+            <li>
+                <h3>Tasks:</h3>
+            </li>
+            @foreach($tasksForCheckboxes as $taskId => $taskTitle)
+                @if(in_array($taskId, $tasks))
+                    <li>
+                        {{ $taskTitle }}
+                    </li>
+                @endif
+            @endforeach
+        </ul>
+
+        <input type='button'
+               value='Edit this goal'
+               onclick="window.location.href='/goals/{{$goal->id}}/edit'"
+               class='btn-primary inputButton'>
+        <input type='button'
+               value='Delete this goal'
+               onclick="window.location.href='/goals/{{$goal->id}}/delete'"
+               class='btn-danger inputButton'>
+
+        <p>
+            <a href='/goals'>Go back to all goals</a>
+        </p>
+    </div>
 @endsection

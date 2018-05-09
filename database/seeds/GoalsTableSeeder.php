@@ -13,9 +13,9 @@ class GoalsTableSeeder extends Seeder
     public function run()
     {
         $goals = [
-           ['House chores', 'Chores I need to do around the house'],
-           ['Things to buy', 'A list of stuff I need to buy online or from various stores'],
-            ['Research topics', 'Random, interesting things I heard about that I want to research more'],
+           ['Be happy', 'Practice ways to improve my mental health'],
+           ['Be healthy', 'Practice ways to improve my physical health'],
+            ['Explore', 'Find new places to adventure'],
         ];
 
         $count = count($goals);

@@ -27,16 +27,15 @@ class GoalController extends Controller
         $goal = Goal::find($id);
         $tasksForCheckboxes = Task::getForCheckboxes();
 
-        if(!$goal) {
+        if (!$goal) {
             return redirect('/goals')->with(
-                ['alert' => 'Goal '.$id.' not found']
+                ['alert' => 'Goal ' . $id . ' not found']
             );
         }
 
-
         return view('goals.show')->with([
-            'goal'=>$goal,
-            'tasksForCheckboxes' =>$tasksForCheckboxes,
+            'goal' => $goal,
+            'tasksForCheckboxes' => $tasksForCheckboxes,
             'tasks' => $goal->tasks()->pluck('tasks.id')->toArray()
         ]);
     }
@@ -44,8 +43,9 @@ class GoalController extends Controller
     public function create(Request $request)
     {
         $tasksForCheckboxes = Task::getForCheckboxes();
+
         return view('goals.create')->with([
-            'tasksForCheckboxes' =>$tasksForCheckboxes,
+            'tasksForCheckboxes' => $tasksForCheckboxes,
             'goal' => new Goal(),
             'tasks' => [],
         ]);
@@ -54,8 +54,6 @@ class GoalController extends Controller
     public function store(Request $request)
     {
         $tasks = [$request->task1, $request->task2, $request->task3];
-
-
 
         $this->validate($request, [
             'title' => 'required',
@@ -81,24 +79,24 @@ class GoalController extends Controller
         }
 
         return redirect('/goals/create')->with([
-            'alert' => 'Your goal '.$title.' was added'
+            'alert' => 'Your goal ' . $title . ' was added'
         ]);
     }
-
 
     public function edit($id)
     {
         $goal = Goal::find($id);
         $tasksForCheckboxes = Task::getForCheckboxes();
-        if(!$goal) {
+        if (!$goal) {
             return redirect('/goals')->with(
-                ['alert' => 'Goal '.$id.' not found']
+                ['alert' => 'Goal ' . $id . ' not found']
             );
         }
+
         return view('goals.edit')->with([
-        'goal' => $goal,
-        'tasksForCheckboxes' =>$tasksForCheckboxes,
-        'tasks' => $goal->tasks()->pluck('tasks.id')->toArray(),
+            'goal' => $goal,
+            'tasksForCheckboxes' => $tasksForCheckboxes,
+            'tasks' => $goal->tasks()->pluck('tasks.id')->toArray(),
         ]);
     }
 
@@ -124,7 +122,8 @@ class GoalController extends Controller
             $newtask = Task::where('title', 'like', $task->title)->first();
             $goal->tasks()->sync($newtask);
         }
-        return redirect('/goals/'.$id)->with([
+
+        return redirect('/goals/' . $id)->with([
             'alert' => 'Your edits were processed'
         ]);
     }
@@ -133,11 +132,11 @@ class GoalController extends Controller
     {
         $goal = Goal::find($id);
 
-        if(!$goal){
+        if (!$goal) {
             return redirect('/goals')->with('alert', 'Goal not found');
         }
 
-        return view('goals.delete')->with([ 'goal' => $goal]);
+        return view('goals.delete')->with(['goal' => $goal]);
     }
 
     public function destroy($id)
@@ -150,6 +149,5 @@ class GoalController extends Controller
             'alert' => 'Goal was removed'
         ]);
     }
-
 
 }

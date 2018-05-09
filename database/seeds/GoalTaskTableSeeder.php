@@ -15,9 +15,9 @@ class GoalTaskTableSeeder extends Seeder
     {
         $goals = [
 
-            'House chores' => ['Paint the walls'],
-            'Things to buy' => ['Buy yellow paint for the walls'],
-            'Research topics' => ['Buy yellow paint for the walls', 'Learn object-relational mapping']
+            'Be happy' => ['Go hiking in Marin', 'Climb Machu Pichu', 'Meditate', 'Do yoga'],
+            'Be healthy' => ['Go to the gym', 'Eat healthy food', 'Go hiking in Marin', 'Go biking in Tahoe', 'Climb Machu Pichu', 'Do yoga'],
+            'Explore' => ['Go hiking in Marin', 'Go biking in Tahoe', 'Climb Machu Pichu']
         ];
 
         foreach ($goals as $title => $tasks) {
