@@ -25,24 +25,24 @@
                 <li><h3> New tasks: </h3></li>
 
                 <li>
-                    <input text='text' name='task1' value='{{ $task1 or old('task1') }}'>
+                    <input class='createinput' text='text' name='task1' value='{{ $task1 or old('task1') }}'>
                     @include('modules.error-field', ['field' => 'task1'])
                 </li>
                 <li>
-                    <input text='text' name='task2' value='{{ $task or old('task') }}'>
+                    <input class='createinput' text='text' name='task2' value='{{ $task or old('task') }}'>
                     @include('modules.error-field', ['field' => 'task2'])
                 </li>
                 <li>
-                    <input text='text' name='task3' value='{{ $task3 or old('task3') }}'>
+                    <input class='createinput' text='text' name='task3' value='{{ $task3 or old('task3') }}'>
                     @include('modules.error-field', ['field' => 'task3'])
                 </li>
             </ul>
 
-            <input type='Submit' value='Add goal' class='btn btn-primary'>
+            <input type='Submit' value='Add goal' class='btn btn-primary submitbuttons'>
 
         </form>
-        <p>
-            <a href='/goals'>Go back to all goals</a>
+        <p class='goback'>
+            <a href='/goals' >Go back to all goals</a>
         </p>
 
     </div>

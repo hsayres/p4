@@ -9,9 +9,9 @@
     <form method='POST' action='/goals/{{ $goal->id }}'>
         {{ method_field('delete') }}
         {{ csrf_field() }}
-        <input type='submit' value='Yes, delete it!' class='btn btn-danger btn-small'>
+        <input type='submit' value='Yes, delete it!' class='btn btn-danger btn-small submitbuttons'>
     </form>
-    <p>
+    <p class='submitbuttons'>
         <a href='/goals/{{$goal->id}}'>No</a>
     </p>
     </div>

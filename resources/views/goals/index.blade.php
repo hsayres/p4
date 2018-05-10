@@ -6,9 +6,9 @@
 
 
         @if(count($goals) > 0)
-            <ul>
+            <ul >
                 @foreach($goals as $goal)
-                    <li><a href='/goals/{{$goal->id}}'>{{$goal->title}} </a></li>
+                    <li class='goallist'><a href='/goals/{{$goal->id}}'>{{$goal->title}} </a></li>
                 @endforeach
             </ul>
         @endif
@@ -16,7 +16,7 @@
             <input type='button'
                    value='Add goal'
                    onclick="window.location.href='/goals/create'"
-                   class='btn-danger inputButton'>
+                   class='btn-danger inputButton submitbuttons'>
         </label>
     </div>
 @endsection

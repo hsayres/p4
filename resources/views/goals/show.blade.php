@@ -31,13 +31,13 @@
         <input type='button'
                value='Edit this goal'
                onclick="window.location.href='/goals/{{$goal->id}}/edit'"
-               class='btn-primary inputButton'>
+               class='btn-primary inputButton submitbuttons'>
         <input type='button'
                value='Delete this goal'
                onclick="window.location.href='/goals/{{$goal->id}}/delete'"
                class='btn-danger inputButton'>
 
-        <p>
+        <p class='goback'>
             <a href='/goals'>Go back to all goals</a>
         </p>
     </div>
