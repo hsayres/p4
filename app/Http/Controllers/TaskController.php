@@ -15,7 +15,7 @@ class TaskController extends Controller
      */
     public function index(Request $request)
     {
-        $tasks = Task::orderBy('title')->get();
+        $tasks = Task::with('goals')->get();
 
         $orderedTasks = array();
 

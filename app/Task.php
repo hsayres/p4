@@ -15,7 +15,7 @@ class Task extends Model
 
     public static function getForCheckboxes()
     {
-        $tasks = self::orderBy('title')->get();
+        $tasks = self::with(['goals'])->get();
 
         $tasksForCheckboxes = [];
 
